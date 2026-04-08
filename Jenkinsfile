@@ -11,26 +11,20 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("bunnykadari/ext")
-                }
+                sh 'docker build -t bunnykadari/ext .'
             }
         }
 
         stage('Stop Old Container') {
             steps {
-                script {
-                    sh 'docker stop ext || true'
-                    sh 'docker rm ext || true'
-                }
+                sh 'docker stop ext || true'
+                sh 'docker rm ext || true'
             }
         }
 
         stage('Run Container') {
             steps {
-                script {
-                    sh 'docker run -d -p 3000:3000 --name ext bunnykadari/ext'
-                }
+                sh 'docker run -d -p 3000:3000 --name ext bunnykadari/ext'
             }
         }
     }
