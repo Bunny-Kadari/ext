@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-username/devops-practice-app.git'
+                git 'https://github.com/Bunny-Kadari/ext.git'
             }
         }
 
